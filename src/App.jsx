@@ -38,10 +38,10 @@ export default function App() {
 
   return (
     <div style={{ background:"#e6e6e6", minHeight:"100vh", fontFamily:"Arial" }}>
-      <header style={{ display:"flex", justifyContent:"space-between", padding:12, border:"4px double green" }}>
-        <img src="/logos/innova.png" height="40" />
+      <header style={{ display:"flex", justifyContent:"space-between", padding:12, border:"8px double green" }}>
+        <img src="/logos/innova.png" height="70" />
         <h2>Panel de Progreso de Obra</h2>
-        <img src="/logos/winplast.png" height="40" />
+        <img src="/logos/winplast.png" height="70" />
       </header>
 
       <div style={{ padding:20 }}>
