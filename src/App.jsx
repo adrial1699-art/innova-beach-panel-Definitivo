@@ -37,8 +37,28 @@ export default function App() {
   const progreso = Math.min(100, registros.length * 10);
 
   return (
-    <div style={{ background:"#e6e6e6", minHeight:"100vh", fontFamily:"Arial" }}>
-      <header style={{ display:"flex", justifyContent:"space-between", padding:12, border:"8px  blue" }}>
+    <div style={{ <header style={{
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  padding: 20,
+  background: "#cfcfcf",        // gris más oscuro
+  border: "8px solid #1e40af",   // azul
+  outline: "8px solid #2563eb",  // segundo azul
+  outlineOffset: "-8px"
+}}>
+ }}>
+      <header style={{ <header style={{
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  padding: 20,
+  background: "#cfcfcf",        // gris más oscuro
+  border: "8px solid #1e40af",   // azul
+  outline: "8px solid #2563eb",  // segundo azul
+  outlineOffset: "-8px"
+}}>
+ }}>
         <img src="/logos/innova.png" height="80" />
         <h2>Panel de Progreso de Obra</h2>
         <img src="/logos/winplast.png" height="100" />
