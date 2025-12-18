@@ -38,14 +38,11 @@ export default function App() {
 
   return (
     <div style={{
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  padding: 40,
-  background: "#cfcfcf",        // gris más oscuro
-  border: "8px solid #1e40af",   // azul
-  outline: "8px solid #2563eb",  // segundo azul
-  outlineOffset: "-8px"
+  background: "#e6e6e6",
+  minHeight: "100vh",
+  fontFamily: "Arial",
+  borderLeft: "10px solid #2563eb",   // azul
+  borderRight: "10px solid #22c55e"   // verde
 }}>
 
      <header style={{
