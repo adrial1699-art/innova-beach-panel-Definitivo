@@ -41,12 +41,9 @@ export default function App() {
   background: "#e6e6e6",
   minHeight: "100vh",
   fontFamily: "Arial",
-  borderLeft: "10px solid 004694",  // azul
-  padding: 10,
   borderLeft: "10px solid #91b338",
   borderRight: "10px solid #91b338",   // verde
-  padding: 10,
-  borderLeft: "10px solid 004694"
+
 }}>
 
      <header style={{
