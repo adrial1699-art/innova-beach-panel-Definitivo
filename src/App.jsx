@@ -38,7 +38,7 @@ export default function App() {
 
   return (
     <div style={{ background:"#e6e6e6", minHeight:"100vh", fontFamily:"Arial" }}>
-      <header style={{ display:"flex", justifyContent:"space-between", padding:12, border:"8px  green and blue" }}>
+      <header style={{ display:"flex", justifyContent:"space-between", padding:12, border:"8px  blue" }}>
         <img src="/logos/innova.png" height="80" />
         <h2>Panel de Progreso de Obra</h2>
         <img src="/logos/winplast.png" height="100" />
