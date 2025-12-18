@@ -52,7 +52,7 @@ export default function App() {
   alignItems: "center",
   padding: 20,
   background: "#cfcfcf",        // gris más oscuro
-  border: "8px solid #1e40af",   // azul
+  border: "8px solid #004694",   // azul
   outline: "8px solid #2563eb",  // segundo azul
   outlineOffset: "-8px"
 }}>
