@@ -41,7 +41,7 @@ export default function App() {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  padding: 20,
+  padding: 40,
   background: "#cfcfcf",        // gris más oscuro
   border: "8px solid #1e40af",   // azul
   outline: "8px solid #2563eb",  // segundo azul
