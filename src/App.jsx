@@ -6,6 +6,8 @@ export default function App() {
   const [bloque, setBloque] = useState("");
   const [vivienda, setVivienda] = useState("");
   const [rows, setRows] = useState([]);
+  const [panelAbierto, setPanelAbierto] = useState(false);
+
 
   useEffect(() => {
     if (!obra) return;
@@ -55,6 +57,100 @@ export default function App() {
   border: "8px solid #004694",   // azul
   outline: "8px solid #2563eb",  // segundo azul
   outlineOffset: "-8px"
+
+    {/* CUERPO PRINCIPAL */}
+    <div
+      style={{
+        display: "flex",
+        minHeight: "calc(100vh - 140px)"
+      }}
+    >
+
+      {/* PANEL LATERAL (AQUÍ VA EL 2 y 3) */}
+      <aside
+        style={{
+          width: 320,
+          padding: 20,
+          background: "#cfcfcf",
+          borderRight: "10px solid blue",
+          outline: "10px solid green",
+          outlineOffset: "-20px"
+        }}
+      >
+        <h3>Resumen vivienda</h3>
+
+        {!vivienda && <p>Selecciona una vivienda</p>}
+
+        {vivienda && (
+          <>
+            <p><strong>Obra:</strong> {obra}</p>
+            <p><strong>Bloque:</strong> {bloque}</p>
+            <p><strong>Vivienda:</strong> V{vivienda}</p>
+            <p><strong>Registros:</strong> {registros.length}</p>
+            <p><strong>Progreso:</strong> {progreso}%</p>
+          </>
+        )}
+      </aside>
+
+      {/* CONTENIDO CENTRAL */}
+      <main style={{ flex: 1, padding: 20 }}>
+
+        {/* SELECTORES */}
+        <select value={obra} onChange={e => setObra(e.target.value)}>
+          <option value="">Selecciona obra</option>
+          {Object.keys(OBRAS).map(o => (
+            <option key={o}>{o}</option>
+          ))}
+        </select>
+
+        {obra && (
+          <select value={bloque} onChange={e => setBloque(e.target.value)}>
+            <option value="">Selecciona bloque</option>
+            {bloques.map(b => (
+              <option key={b}>{b}</option>
+            ))}
+          </select>
+        )}
+
+        {bloque && (
+          <select value={vivienda} onChange={e => setVivienda(e.target.value)}>
+            <option value="">Selecciona vivienda</option>
+            {viviendas.map(v => (
+              <option key={v}>V{v}</option>
+            ))}
+          </select>
+        )}
+
+        {/* PANEL PROGRESO */}
+        {vivienda && (
+          <div
+            style={{
+              marginTop: 30,
+              padding: 20,
+              background: "#bdbdbd",
+              border: "3px double blue"
+            }}
+          >
+            <strong>{obra} · {bloque} · V{vivienda}</strong>
+
+            <div style={{ background: "#999", height: 18, marginTop: 10 }}>
+              <div
+                style={{
+                  width: progreso + "%",
+                  height: "100%",
+                  background: "green"
+                }}
+              />
+            </div>
+
+            <p>{progreso}%</p>
+          </div>
+        )}
+
+      </main>
+    </div>
+  </div>
+);    
 }}>
 
         <img src="/logos/innova.png" height="80" />
