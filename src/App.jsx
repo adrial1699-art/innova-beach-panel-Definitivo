@@ -43,8 +43,8 @@ export default function App() {
         background: "#e6e6e6",
         minHeight: "100vh",
         fontFamily: "Arial",
-        borderLeft: "10px solid blue",
-        borderRight: "10px solid green"
+        borderLeft: "10px solid #91b338",
+        borderRight: "10px solid #91b338"
       }}
     >
       {/* HEADER */}
@@ -66,20 +66,15 @@ export default function App() {
       </header>
 
       {/* CUERPO */}
-      <div
-        style={{
-          display: "flex",
-          minHeight: "calc(100vh - 140px)"
-        }}
-      >
+      <div style={{ display: "flex", minHeight: "calc(100vh - 140px)" }}>
         {/* PANEL LATERAL */}
         <aside
           style={{
             width: 320,
             padding: 20,
             background: "#cfcfcf",
-            borderRight: "10px solid blue",
-            outline: "10px solid green",
+            borderRight: "10px solid #004694",
+            outline: "10px solid #91b338",
             outlineOffset: "-20px"
           }}
         >
