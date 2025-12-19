@@ -21,14 +21,14 @@ export default function App() {
       .then(t => {
         const json = JSON.parse(t.substring(47).slice(0, -2));
         const data = json.table.rows.map(r => ({
-  bloque: r.c[1]?.v || "",
-  vivienda: String(r.c[2]?.v || ""),
-  tarea: r.c[3]?.v || ""   // 👈 nombre de la tarea
-}));
+          bloque: r.c[1]?.v || "",
+          vivienda: String(r.c[2]?.v || ""),
+          tarea: r.c[3]?.v || ""
+        }));
         setRows(data);
       });
   }, [obra]);
-const tareasHechas = [...new Set(registros.map(r => r.tarea))];
+
   const bloques = obra ? Object.keys(OBRAS[obra].bloques) : [];
   const viviendas = obra && bloque ? OBRAS[obra].bloques[bloque] : [];
 
@@ -36,31 +36,23 @@ const tareasHechas = [...new Set(registros.map(r => r.tarea))];
     r => r.bloque === bloque && r.vivienda === String(vivienda)
   );
 
-  const progreso = Math.min(100, registros.length * 10);
+  const tareasHechas = [...new Set(registros.map(r => r.tarea))];
+  const progreso = Math.min(100, tareasHechas.length * 10);
 
   return (
-    <div
-      style={{
-        background: "#e6e6e6",
-        minHeight: "100vh",
-        fontFamily: "Arial",
-        borderLeft: "10px solid #91b338",
-        borderRight: "10px solid #91b338"
-      }}
-    >
+    <div style={{ background: "#e6e6e6", minHeight: "100vh", fontFamily: "Arial" }}>
+
       {/* HEADER */}
-      <header
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: 20,
-          background: "#cfcfcf",
-          border: "8px solid #004694",
-          outline: "8px solid #2563eb",
-          outlineOffset: "-8px"
-        }}
-      >
+      <header style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: 20,
+        background: "#cfcfcf",
+        border: "8px solid #004694",
+        outline: "8px solid #2563eb",
+        outlineOffset: "-8px"
+      }}>
         <img src="/logos/innova.png" height="80" />
         <h2>Panel de Progreso de Obra</h2>
         <img src="/logos/winplast.png" height="100" />
@@ -68,38 +60,43 @@ const tareasHechas = [...new Set(registros.map(r => r.tarea))];
 
       {/* CUERPO */}
       <div style={{ display: "flex", minHeight: "calc(100vh - 140px)" }}>
+
         {/* PANEL LATERAL */}
-        <aside
-          style={{
-            width: 320,
-            padding: 20,
-            background: "#cfcfcf",
-            borderRight: "10px solid #004694",
-            outline: "10px solid #91b338",
-            outlineOffset: "-20px"
-          }}
-        >
+        <aside style={{
+          width: 320,
+          padding: 20,
+          background: "#cfcfcf",
+          borderRight: "10px solid #004694",
+          outline: "10px solid #91b338",
+          outlineOffset: "-20px"
+        }}>
           <h3>Resumen vivienda</h3>
 
           {!vivienda && <p>Selecciona una vivienda</p>}
 
           {vivienda && (
             <>
-            <p><strong>Progreso:</strong> {progreso}%
-            </p> <h4 style={{ marginTop: 15 }}>Tareas completadas</h4>
-{tareasHechas.length === 0 && (
-  <p>No hay tareas registradas</p>
-)}
+              <p><strong>Obra:</strong> {obra}</p>
+              <p><strong>Bloque:</strong> {bloque}</p>
+              <p><strong>Vivienda:</strong> V{vivienda}</p>
+              <p><strong>Progreso:</strong> {progreso}%</p>
 
-<ul style={{ paddingLeft: 18 }}>
-  {tareasHechas.map((t, i) => (
-    <li key={i}>{t}</li>
-  ))}
-</ul>
+              <h4 style={{ marginTop: 15 }}>Tareas completadas</h4>
+
+              {tareasHechas.length === 0 && <p>No hay tareas registradas</p>}
+
+              <ul style={{ paddingLeft: 18 }}>
+                {tareasHechas.map((t, i) => (
+                  <li key={i}>{t}</li>
+                ))}
+              </ul>
+            </>
+          )}
         </aside>
 
         {/* CONTENIDO CENTRAL */}
         <main style={{ flex: 1, padding: 20 }}>
+
           <select value={obra} onChange={e => setObra(e.target.value)}>
             <option value="">Selecciona obra</option>
             {Object.keys(OBRAS).map(o => (
@@ -126,24 +123,20 @@ const tareasHechas = [...new Set(registros.map(r => r.tarea))];
           )}
 
           {vivienda && (
-            <div
-              style={{
-                marginTop: 30,
-                padding: 20,
-                background: "#bdbdbd",
-                border: "3px double blue"
-              }}
-            >
+            <div style={{
+              marginTop: 30,
+              padding: 20,
+              background: "#bdbdbd",
+              border: "3px double blue"
+            }}>
               <strong>{obra} · {bloque} · V{vivienda}</strong>
 
               <div style={{ background: "#999", height: 18, marginTop: 10 }}>
-                <div
-                  style={{
-                    width: progreso + "%",
-                    height: "100%",
-                    background: "green"
-                  }}
-                />
+                <div style={{
+                  width: progreso + "%",
+                  height: "100%",
+                  background: "green"
+                }} />
               </div>
 
               <p>{progreso}%</p>
