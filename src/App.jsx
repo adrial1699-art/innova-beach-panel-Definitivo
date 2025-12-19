@@ -127,21 +127,36 @@ const [bajoEscalera, setBajoEscalera] = useState(false);
                 <li key={i}>{t}</li>
               ))}
             </ul>
+const mostrarBajoEscalera = () => {
+  if (!obra || !bloque || !vivienda) return false;
 
-            {/* BAJO ESCALERA (solo si aplica) */}
-{mostrarBajoEscalera() && (
-  <div style={{ marginTop: 15 }}>
-    <label style={{ fontWeight: "bold", fontSize: 16 }}>
-      <input
-        type="checkbox"
-        checked={bajoEscalera}
-        onChange={e => setBajoEscalera(e.target.checked)}
-        style={{ marginRight: 8 }}
-      />
-      Bajo escalera (extra)
-    </label>
-  </div>
-)}
+  const v = Number(vivienda);
+  if (Number.isNaN(v)) return false;
+
+  // INNOVA BEACH III → impares
+  if (obra === "INNOVA BEACH III") {
+    return v % 2 !== 0;
+  }
+
+  // INNOVA THIAR → impares
+  if (obra === "INNOVA THIAR") {
+    return v % 2 !== 0;
+  }
+
+  // INNOVA BEACH IV
+  if (obra === "INNOVA BEACH IV") {
+    // Bloque 1 → 2 plantas
+    if (bloque === "Bloque 1") {
+      return v % 2 !== 0;
+    }
+
+    // Bloque 2 → 3 plantas (solo estas son planta baja)
+    const plantasBajasBloque2 = [11, 14, 17, 20];
+    return plantasBajasBloque2.includes(v);
+  }
+
+  return false;
+};
 
             {/* CERRAR */}
             <button
