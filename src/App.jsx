@@ -3,12 +3,11 @@ import { OBRAS, SHEET_ID } from "./config/obras";
 
 export default function App() {
   const [obra, setObra] = useState("");
-  const [bloque, setBloque] = useState("");
-  const [vivienda, setVivienda] = useState("");
-  const [rows, setRows] = useState([]);
-  const [panelAbierto, setPanelAbierto] = useState(false);
-const [bajoEscalera, setBajoEscalera] = useState(false);;
-
+const [bloque, setBloque] = useState("");
+const [vivienda, setVivienda] = useState("");
+const [rows, setRows] = useState([]);
+const [panelAbierto, setPanelAbierto] = useState(false);
+const [bajoEscalera, setBajoEscalera] = useState(false);
   const v = Number(vivienda);
 
   // INNOVA BEACH III → impares
