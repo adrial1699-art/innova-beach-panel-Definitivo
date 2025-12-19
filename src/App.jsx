@@ -7,8 +7,7 @@ export default function App() {
   const [vivienda, setVivienda] = useState("");
   const [rows, setRows] = useState([]);
   const [panelAbierto, setPanelAbierto] = useState(false);
-  const mostrarBajoEscalera = () => {
-  if (!vivienda) return false;
+const [bajoEscalera, setBajoEscalera] = useState(false);;
 
   const v = Number(vivienda);
 
