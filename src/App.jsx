@@ -28,7 +28,7 @@ export default function App() {
         setRows(data);
       });
   }, [obra]);
-
+const tareasHechas = [...new Set(registros.map(r => r.tarea))];
   const bloques = obra ? Object.keys(OBRAS[obra].bloques) : [];
   const viviendas = obra && bloque ? OBRAS[obra].bloques[bloque] : [];
 
@@ -85,13 +85,17 @@ export default function App() {
 
           {vivienda && (
             <>
-              <p><strong>Obra:</strong> {obra}</p>
-              <p><strong>Bloque:</strong> {bloque}</p>
-              <p><strong>Vivienda:</strong> V{vivienda}</p>
-              <p><strong>Registros:</strong> {registros.length}</p>
-              <p><strong>Progreso:</strong> {progreso}%</p>
-            </>
-          )}
+            <p><strong>Progreso:</strong> {progreso}%
+            </p> <h4 style={{ marginTop: 15 }}>Tareas completadas</h4>
+{tareasHechas.length === 0 && (
+  <p>No hay tareas registradas</p>
+)}
+
+<ul style={{ paddingLeft: 18 }}>
+  {tareasHechas.map((t, i) => (
+    <li key={i}>{t}</li>
+  ))}
+</ul>
         </aside>
 
         {/* CONTENIDO CENTRAL */}
