@@ -7,7 +7,36 @@ export default function App() {
   const [vivienda, setVivienda] = useState("");
   const [rows, setRows] = useState([]);
   const [panelAbierto, setPanelAbierto] = useState(false);
-  const [bajoEscalera, setBajoEscalera] = useState(false);
+  const mostrarBajoEscalera = () => {
+  if (!vivienda) return false;
+
+  const v = Number(vivienda);
+
+  // INNOVA BEACH III → impares
+  if (obra === "INNOVA BEACH III") {
+    return v % 2 !== 0;
+  }
+
+  // INNOVA THIAR → impares
+  if (obra === "INNOVA THIAR") {
+    return v % 2 !== 0;
+  }
+
+  // INNOVA BEACH IV
+  if (obra === "INNOVA BEACH IV") {
+    // Bloque 1 → 2 plantas → impares abajo
+    if (bloque === "Bloque 1") {
+      return v % 2 !== 0;
+    }
+
+    // Bloque 2 → 3 plantas
+    // 👉 AJUSTA AQUÍ las viviendas que son planta baja
+    const plantasBajasBloque2 = [11, 14, 17, 20]; 
+    return plantasBajasBloque2.includes(v);
+  }
+
+  return false;
+};
 
   useEffect(() => {
     if (!obra) return;
@@ -101,18 +130,20 @@ export default function App() {
               ))}
             </ul>
 
-            {/* BAJO ESCALERA */}
-            <div style={{ marginTop: 15 }}>
-              <label style={{ fontWeight: "bold" }}>
-                <input
-                  type="checkbox"
-                  checked={bajoEscalera}
-                  onChange={e => setBajoEscalera(e.target.checked)}
-                  style={{ marginRight: 8 }}
-                />
-                Bajo escalera
-              </label>
-            </div>
+            {/* BAJO ESCALERA (solo si aplica) */}
+{mostrarBajoEscalera() && (
+  <div style={{ marginTop: 15 }}>
+    <label style={{ fontWeight: "bold", fontSize: 16 }}>
+      <input
+        type="checkbox"
+        checked={bajoEscalera}
+        onChange={e => setBajoEscalera(e.target.checked)}
+        style={{ marginRight: 8 }}
+      />
+      Bajo escalera (extra)
+    </label>
+  </div>
+)}
 
             {/* CERRAR */}
             <button
