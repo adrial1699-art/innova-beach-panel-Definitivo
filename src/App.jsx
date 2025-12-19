@@ -21,9 +21,10 @@ export default function App() {
       .then(t => {
         const json = JSON.parse(t.substring(47).slice(0, -2));
         const data = json.table.rows.map(r => ({
-          bloque: r.c[1]?.v || "",
-          vivienda: String(r.c[2]?.v || "")
-        }));
+  bloque: r.c[1]?.v || "",
+  vivienda: String(r.c[2]?.v || ""),
+  tarea: r.c[3]?.v || ""   // 👈 nombre de la tarea
+}));
         setRows(data);
       });
   }, [obra]);
